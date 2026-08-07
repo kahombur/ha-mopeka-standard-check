@@ -1,0 +1,37 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured",
+      "already_in_progress": "Configuration flow is already in progress",
+      "no_devices_found": "No unconfigured Mopeka Standard Check devices found. Make sure the sensor's battery is installed and press its sync button so it broadcasts.",
+      "not_supported": "Device not supported"
+    },
+    "flow_title": "{name}",
+    "step": {
+      "bluetooth_confirm": {
+        "description": "Set up {name} and choose the tank size.",
+        "data": {
+          "tank_type": "Tank size"
+        }
+      },
+      "user": {
+        "description": "Choose a discovered Mopeka Standard Check sensor and its tank size.",
+        "data": {
+          "address": "Device",
+          "tank_type": "Tank size"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mopeka Standard Check",
+        "description": "Choose the tank size used to convert the sensor distance into a fill percentage.",
+        "data": {
+          "tank_type": "Tank size"
+        }
+      }
+    }
+  }
+}

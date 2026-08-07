@@ -1,0 +1,19 @@
+{
+  "domain": "mopeka_std",
+  "name": "Mopeka Standard Check",
+  "bluetooth": [
+    {
+      "connectable": false,
+      "service_uuid": "0000ada0-0000-1000-8000-00805f9b34fb"
+    }
+  ],
+  "codeowners": ["@kahombur"],
+  "config_flow": true,
+  "dependencies": ["bluetooth_adapters"],
+  "documentation": "https://github.com/kahombur/ha-mopeka-standard-check",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/kahombur/ha-mopeka-standard-check/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
