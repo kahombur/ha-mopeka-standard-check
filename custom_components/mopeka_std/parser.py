@@ -126,14 +126,21 @@ class MopekaStdBluetoothDeviceData(BluetoothData):
         valid = number_usable >= 1 and best_value >= 2 and best_time >= 2
 
         # Tank fill percentage from the selected tank preset (linear empty->full).
+        # The sensor is broadcasting (we are decoding an advert), so if it returns
+        # no usable echo the tank has no liquid surface to reflect off -> it's
+        # empty. Report 0% in that case rather than unknown. (An out-of-range or
+        # dead sensor stops broadcasting entirely and HA marks it unavailable.)
         tank_percent: int | None = None
-        if valid and self._full_mm > self._empty_mm:
-            pct = (
-                (distance_mm - self._empty_mm)
-                / (self._full_mm - self._empty_mm)
-                * 100.0
-            )
-            tank_percent = int(round(max(0.0, min(100.0, pct))))
+        if self._full_mm > self._empty_mm:
+            if valid:
+                pct = (
+                    (distance_mm - self._empty_mm)
+                    / (self._full_mm - self._empty_mm)
+                    * 100.0
+                )
+                tank_percent = int(round(max(0.0, min(100.0, pct))))
+            else:
+                tank_percent = 0
 
         self.update_predefined_sensor(
             SensorLibrary.TEMPERATURE__CELSIUS, round(temp_c, 1)
