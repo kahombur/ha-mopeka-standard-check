@@ -14,6 +14,6 @@
   "integration_type": "device",
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/kahombur/ha-mopeka-standard-check/issues",
-  "requirements": [],
-  "version": "1.0.0"
+  "requirements": ["bluetooth-sensor-state-data>=1.6.1", "sensor-state-data>=2.18.0"],
+  "version": "1.0.2"
 }
